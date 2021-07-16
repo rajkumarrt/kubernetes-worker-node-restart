@@ -1,5 +1,12 @@
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><u>Restart of node (Perform this activity in Master node)</u></strong></span></span></p>
 
+<div class="snippet-clipboard-content position-relative" data-snippet-clipboard-copy-content="kubectl get nodes
+"><pre><code>NAME            STATUS   ROLES    AGE   VERSION
+k8-pr-master    Ready    master   20h   v1.18.1
+k8-pr-woker1    Ready    <none>   19h   v1.18.1
+kb-pr-worker2   Ready    <none>   36m   v1.18.1
+</code></pre></div>
+
 <p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:8.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl get nodes</span></span></span></span></span></span></span></span></p>
 
 <p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:8.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STATUS&nbsp;&nbsp; ROLES&nbsp;&nbsp;&nbsp; AGE&nbsp;&nbsp; VERSION</span></span></span></span></span></span></span></p>
