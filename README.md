@@ -1,163 +1,165 @@
-Restart of node (Perform this activity in Master node)
+<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><u>Restart of node (Perform this activity in Master node)</u></strong></span></span></p>
 
-root@k8-pr-master:~# kubectl get nodes
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl get nodes</span></span></span></span></span></span></span></span></p>
 
-NAME            STATUS   ROLES    AGE   VERSION
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STATUS&nbsp;&nbsp; ROLES&nbsp;&nbsp;&nbsp; AGE&nbsp;&nbsp; VERSION</span></span></span></span></span></span></span></p>
 
-k8-pr-master    Ready    master   20h   v1.18.1
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">k8-pr-master&nbsp;&nbsp;&nbsp; Ready&nbsp;&nbsp;&nbsp; master&nbsp;&nbsp; 20h&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
-k8-pr-woker1    Ready    <none>   19h   v1.18.1
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">k8-pr-woker1&nbsp;&nbsp;&nbsp; Ready&nbsp;&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp; 19h&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
-kb-pr-worker2   Ready    <none>   36m   v1.18.1
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">kb-pr-worker2&nbsp;&nbsp; Ready&nbsp;&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp; 36m&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
+<p>&nbsp;</p>
 
+<p><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">#Drain the node in worker2 node2</span></span></strong></p>
 
-#Drain the node in worker2 node2
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~#&nbsp; <span style="background-color:yellow">kubectl drain --ignore-daemonsets --force --delete-local-data kb-pr-worker2</span></span></span></span></span></span></span></span></p>
 
-root@k8-pr-master:~#  kubectl drain --ignore-daemonsets --force --delete-local-data kb-pr-worker2
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">Flag --delete-local-data has been deprecated, This option is deprecated and will be deleted. Use --delete-emptydir-data.</span></span></span></span></span></span></span></p>
 
-Flag --delete-local-data has been deprecated, This option is deprecated and will be deleted. Use --delete-emptydir-data.
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">node/kb-pr-worker2 cordoned</span></span></span></span></span></span></span></p>
 
-node/kb-pr-worker2 cordoned
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">WARNING: ignoring DaemonSet-managed Pods: kube-system/calico-node-4hrtp, kube-system/kube-proxy-kdfhc</span></span></span></span></span></span></span></p>
 
-WARNING: ignoring DaemonSet-managed Pods: kube-system/calico-node-4hrtp, kube-system/kube-proxy-kdfhc
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">evicting pod default/nginx-deployment-d46f5678b-js8tl</span></span></span></span></span></span></span></p>
 
-evicting pod default/nginx-deployment-d46f5678b-js8tl
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">evicting pod default/nginx-deployment-d46f5678b-hntfv</span></span></span></span></span></span></span></p>
 
-evicting pod default/nginx-deployment-d46f5678b-hntfv
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">pod/nginx-deployment-d46f5678b-hntfv evicted</span></span></span></span></span></span></span></p>
 
-pod/nginx-deployment-d46f5678b-hntfv evicted
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">pod/nginx-deployment-d46f5678b-js8tl evicted</span></span></span></span></span></span></span></p>
 
-pod/nginx-deployment-d46f5678b-js8tl evicted
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">node/kb-pr-worker2 evicted</span></span></span></span></span></span></span></p>
 
-node/kb-pr-worker2 evicted
+<p>&nbsp;</p>
 
+<p>&nbsp;</p>
 
+<p><strong><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">Note: To force termination of any problematic pods, use the following command:</span></span></span></span></span></span></span></strong></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<span style="background-color:yellow">kubectl delete pod &lt;pod_name&gt; -n=&lt;pod_namespace&gt; --grace-period=0 --force</span></span></span></span></span></span></span></span></p>
 
+<p>&nbsp;</p>
 
-Note: To force termination of any problematic pods, use the following command:
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl cordon kb-pr-worker2</span></span></span></span></span></span></span></span></p>
 
-        kubectl delete pod <pod_name> -n=<pod_namespace> --grace-period=0 --force
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">node/kb-pr-worker2 already cordoned</span></span></span></span></span></span></span></p>
 
+<p>&nbsp;</p>
 
+<p>&nbsp;</p>
 
-root@k8-pr-master:~# kubectl cordon kb-pr-worker2
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl get nodes</span></span></span></span></span></span></span></span></p>
 
-node/kb-pr-worker2 already cordoned
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ROLES&nbsp;&nbsp;&nbsp; AGE&nbsp;&nbsp; VERSION</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">k8-pr-master&nbsp;&nbsp;&nbsp; Ready&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; master&nbsp;&nbsp; 20h&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">k8-pr-woker1&nbsp;&nbsp;&nbsp; Ready&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp; 19h&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">kb-pr-worker2&nbsp;&nbsp; Ready,SchedulingDisabled&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp; 37m&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
+<p>&nbsp;</p>
 
-root@k8-pr-master:~# kubectl get nodes
+<p><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">#All pods are moved to worker1 node</span></span></strong></p>
 
-NAME            STATUS                     ROLES    AGE   VERSION
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl get pods -o wide</span></span></span></span></span></span></span></span></p>
 
-k8-pr-master    Ready                      master   20h   v1.18.1
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; READY&nbsp;&nbsp; STATUS&nbsp;&nbsp;&nbsp; RESTARTS&nbsp;&nbsp; AGE&nbsp;&nbsp; IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOMINATED NODE&nbsp;&nbsp; READINESS GATES</span></span></span></span></span></span></span></p>
 
-k8-pr-woker1    Ready                      <none>   19h   v1.18.1
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-k4xp8&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 31s&nbsp;&nbsp; 10.10.240.198&nbsp;&nbsp; </span></span></span><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:red">k8-pr-woker1&nbsp;&nbsp; </span></span></span><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-kb-pr-worker2   Ready,SchedulingDisabled   <none>   37m   v1.18.1
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-kt8qg&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 31s&nbsp;&nbsp; 10.10.240.197&nbsp;&nbsp; </span></span></span><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:red">k8-pr-woker1&nbsp;&nbsp; </span></span></span><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-l5p8n&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19h&nbsp;&nbsp; 10.10.240.195&nbsp;&nbsp; </span></span></span><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:red">k8-pr-woker1&nbsp;&nbsp; </span></span></span><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-q65pj&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19h&nbsp;&nbsp; 10.10.240.196&nbsp;&nbsp; </span></span></span><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:red">k8-pr-woker1&nbsp;&nbsp; </span></span></span><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-#All pods are moved to worker1 node
+<p>&nbsp;</p>
 
-root@k8-pr-master:~# kubectl get pods -o wide
+<p><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">#View the pod details in particular node</span></span></strong></p>
 
-NAME                               READY   STATUS    RESTARTS   AGE   IP              NODE           NOMINATED NODE   READINESS GATES
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~#&nbsp;&nbsp; <span style="background-color:yellow">kubectl get pods -o wide --all-namespaces --field-selector=spec.nodeName==kb-pr-worker2</span></span></span></span></span></span></span></span></p>
 
-nginx-deployment-d46f5678b-k4xp8   1/1     Running   0          31s   10.10.240.198   k8-pr-woker1   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAMESPACE&nbsp;&nbsp;&nbsp;&nbsp; NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; READY&nbsp;&nbsp; STATUS&nbsp;&nbsp;&nbsp; RESTARTS&nbsp;&nbsp; AGE&nbsp;&nbsp; IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOMINATED NODE&nbsp;&nbsp; READINESS GATES</span></span></span></span></span></span></span></p>
 
-nginx-deployment-d46f5678b-kt8qg   1/1     Running   0          31s   10.10.240.197   k8-pr-woker1   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">kube-system&nbsp;&nbsp; calico-node-4hrtp&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 38m&nbsp;&nbsp; 192.168.10.8&nbsp;&nbsp; kb-pr-worker2&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-nginx-deployment-d46f5678b-l5p8n   1/1     Running   1          19h   10.10.240.195   k8-pr-woker1   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">kube-system&nbsp;&nbsp; kube-proxy-kdfhc&nbsp;&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 38m&nbsp;&nbsp; 192.168.10.8&nbsp;&nbsp; kb-pr-worker2&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-nginx-deployment-d46f5678b-q65pj   1/1     Running   1          19h   10.10.240.196   k8-pr-woker1   <none>           <none>
+<p>&nbsp;</p>
 
+<p><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">#After reboot of the worker2 node, uncordon</span></span></strong></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl uncordon kb-pr-worker2</span></span></span></span></span></span></span></span></p>
 
-#View the pod details in particular node
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">node/kb-pr-worker2 uncondoned</span></span></span></span></span></span></span></p>
 
-root@k8-pr-master:~#   kubectl get pods -o wide --all-namespaces --field-selector=spec.nodeName==kb-pr-worker2
+<p>&nbsp;</p>
 
-NAMESPACE     NAME                READY   STATUS    RESTARTS   AGE   IP             NODE            NOMINATED NODE   READINESS GATES
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl get nodes</span></span></span></span></span></span></span></span></p>
 
-kube-system   calico-node-4hrtp   1/1     Running   0          38m   192.168.10.8   kb-pr-worker2   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STATUS&nbsp;&nbsp; ROLES&nbsp;&nbsp;&nbsp; AGE&nbsp;&nbsp; VERSION</span></span></span></span></span></span></span></p>
 
-kube-system   kube-proxy-kdfhc    1/1     Running   0          38m   192.168.10.8   kb-pr-worker2   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">k8-pr-master&nbsp;&nbsp;&nbsp; Ready&nbsp;&nbsp;&nbsp; master&nbsp;&nbsp; 20h&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">k8-pr-woker1&nbsp;&nbsp;&nbsp; Ready&nbsp;&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp; 19h&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">kb-pr-worker2&nbsp;&nbsp; Ready&nbsp;&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp; 38m&nbsp;&nbsp; v1.18.1</span></span></span></span></span></span></span></p>
 
-#After reboot of the worker2 node, uncordon
+<p>&nbsp;</p>
 
-root@k8-pr-master:~# kubectl uncordon kb-pr-worker2
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl get pods -o wide</span></span></span></span></span></span></span></span></p>
 
-node/kb-pr-worker2 uncondoned
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; READY&nbsp;&nbsp; STATUS&nbsp;&nbsp;&nbsp; RESTARTS&nbsp;&nbsp; AGE&nbsp;&nbsp;&nbsp; IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOMINATED NODE&nbsp;&nbsp; READINESS GATES</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-k4xp8&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2m4s&nbsp;&nbsp; 10.10.240.198&nbsp;&nbsp; k8-pr-woker1&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-kt8qg&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2m4s&nbsp;&nbsp; 10.10.240.197&nbsp;&nbsp; k8-pr-woker1&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-root@k8-pr-master:~# kubectl get nodes
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-l5p8n&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19h&nbsp;&nbsp;&nbsp; 10.10.240.195&nbsp;&nbsp; k8-pr-woker1&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-NAME            STATUS   ROLES    AGE   VERSION
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-q65pj&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19h&nbsp;&nbsp;&nbsp; 10.10.240.196&nbsp;&nbsp; k8-pr-woker1&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-k8-pr-master    Ready    master   20h   v1.18.1
+<p>&nbsp;</p>
 
-k8-pr-woker1    Ready    <none>   19h   v1.18.1
+<p><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">#Incase load is less, pods will not move to worker node 2. Just create addl node (replica) - Testing</span></span></strong></p>
 
-kb-pr-worker2   Ready    <none>   38m   v1.18.1
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl apply -f sampledeploy.yaml</span></span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">deployment.apps/nginx-deployment configured</span></span></span></span></span></span></span></p>
 
+<p>&nbsp;</p>
 
-root@k8-pr-master:~# kubectl get pods -o wide
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~# <span style="background-color:yellow">kubectl get pods -o wide</span></span></span></span></span></span></span></span></p>
 
-NAME                               READY   STATUS    RESTARTS   AGE    IP              NODE           NOMINATED NODE   READINESS GATES
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; READY&nbsp;&nbsp; STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RESTARTS&nbsp;&nbsp; AGE&nbsp;&nbsp;&nbsp;&nbsp; IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NODE&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOMINATED NODE&nbsp;&nbsp; READINESS GATES</span></span></span></span></span></span></span></p>
 
-nginx-deployment-d46f5678b-k4xp8   1/1     Running   0          2m4s   10.10.240.198   k8-pr-woker1   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-8jw8r&nbsp;&nbsp; 0/1&nbsp;&nbsp;&nbsp;&nbsp; ContainerCreating&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:red">kb-pr-worker2&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-nginx-deployment-d46f5678b-kt8qg   1/1     Running   0          2m4s   10.10.240.197   k8-pr-woker1   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-jfrps&nbsp;&nbsp; 0/1&nbsp;&nbsp;&nbsp;&nbsp; ContainerCreating&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5s&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:red">kb-pr-worker2&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-nginx-deployment-d46f5678b-l5p8n   1/1     Running   1          19h    10.10.240.195   k8-pr-woker1   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-k4xp8&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4m31s&nbsp;&nbsp; 10.10.240.198&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:red">k8-pr-woker1&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-nginx-deployment-d46f5678b-q65pj   1/1     Running   1          19h    10.10.240.196   k8-pr-woker1   <none>           <none>
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-kt8qg&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4m31s&nbsp;&nbsp; 10.10.240.197&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:red">k8-pr-woker1&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-l5p8n&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19h&nbsp;&nbsp;&nbsp;&nbsp; 10.10.240.195&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:red">k8-pr-woker1&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">nginx-deployment-d46f5678b-q65pj&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19h&nbsp;&nbsp;&nbsp;&nbsp; 10.10.240.196&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:red">k8-pr-woker1&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:9.0pt"><span style="font-family:Consolas"><span style="color:#333333">&lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-#Incase load is less, pods will not move to worker node 2. Just create addl node (replica) - Testing
+<p>&nbsp;</p>
 
-root@k8-pr-master:~# kubectl apply -f sampledeploy.yaml
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">root@k8-pr-master:~#&nbsp;&nbsp; <span style="background-color:yellow">Kubectl get pods -o wide --all-namespaces --field-selector=spec.nodeName==kb-pr-worker2</span></span></span></span></span></span></span></span></p>
 
-deployment.apps/nginx-deployment configured
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">NAMESPACE&nbsp;&nbsp;&nbsp;&nbsp; NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;READY&nbsp;&nbsp; STATUS&nbsp;&nbsp;&nbsp; RESTARTS&nbsp;&nbsp; AGE&nbsp;&nbsp;&nbsp; IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOMINATED NODE&nbsp;&nbsp; READINESS GATES</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nginx-deployment-d46f5678b-8jw8r&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2m9s&nbsp;&nbsp; 10.10.82.196&nbsp;&nbsp; kb-pr-worker2&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">default&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;nginx-deployment-d46f5678b-jfrps&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2m9s&nbsp;&nbsp; 10.10.82.195&nbsp;&nbsp; kb-pr-worker2&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;none&gt;</span></span></span></span></span></span></span></p>
 
-root@k8-pr-master:~# kubectl get pods -o wide
+<p><span style="background-color:whitesmoke"><span style="font-size:11pt"><span style="background-color:whitesmoke"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">kube-system&nbsp;&nbsp; calico-node-4hrtp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43m&nbsp;&nbsp;&nbsp; 192.168.10.8&nbsp;&nbsp; kb-pr-worker2&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;none&gt;</span></span></span></span></span></span></span></p>
 
-NAME                               READY   STATUS              RESTARTS   AGE     IP              NODE            NOMINATED NODE   READINESS GATES
+<p><span style="font-size:10.0pt"><span style="font-family:Consolas"><span style="color:#333333">kube-system&nbsp;&nbsp; kube-proxy-kdfhc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1/1&nbsp;&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43m&nbsp;&nbsp;&nbsp; 192.168.10.8&nbsp;&nbsp; kb-pr-worker2&nbsp;&nbsp; &lt;none&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></p>
 
-nginx-deployment-d46f5678b-8jw8r   0/1     ContainerCreating   0          5s      <none>          kb-pr-worker2   <none>           <none>
-
-nginx-deployment-d46f5678b-jfrps   0/1     ContainerCreating   0          5s      <none>          kb-pr-worker2   <none>           <none>
-
-nginx-deployment-d46f5678b-k4xp8   1/1     Running             0          4m31s   10.10.240.198   k8-pr-woker1    <none>           <none>
-
-nginx-deployment-d46f5678b-kt8qg   1/1     Running             0          4m31s   10.10.240.197   k8-pr-woker1    <none>           <none>
-
-nginx-deployment-d46f5678b-l5p8n   1/1     Running             1          19h     10.10.240.195   k8-pr-woker1    <none>           <none>
-
-nginx-deployment-d46f5678b-q65pj   1/1     Running             1          19h     10.10.240.196   k8-pr-woker1    <none>           <none>
-
-
-
-root@k8-pr-master:~#   Kubectl get pods -o wide --all-namespaces --field-selector=spec.nodeName==kb-pr-worker2
-
-NAMESPACE     NAME                               READY   STATUS    RESTARTS   AGE    IP             NODE            NOMINATED NODE   READINESS GATES
-
-default       nginx-deployment-d46f5678b-8jw8r   1/1     Running   0          2m9s   10.10.82.196   kb-pr-worker2   <none>           <none>
-
-default       nginx-deployment-d46f5678b-jfrps   1/1     Running   0          2m9s   10.10.82.195   kb-pr-worker2   <none>           <none>
-
-kube-system   calico-node-4hrtp                  1/1     Running   0          43m    192.168.10.8   kb-pr-worker2   <none>           <none>
-
-kube-system   kube-proxy-kdfhc                   1/1     Running   0          43m    192.168.10.8   kb-pr-worker2   <none>     
+![visitors](https://visitor-badge.glitch.me/badge?page_id=rajkumarrt.visitor-badge)
